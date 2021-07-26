@@ -1,0 +1,271 @@
+swagger: '2.0'
+info:
+  description: Sistema de Controle de Bicicleta
+  version: 1.0.0
+  title: SCB PM UNIRIO
+  # put the contact info for your development or API team
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: Ciclista
+  description: Operações de Ciclista
+- name: Bicicleta
+  description: Operações de Bicicleta
+- name: Equipamento Fixo
+  description: Operações de Tranca e Totem
+- name: Funcionário
+  description: Operações de Funcionário
+- name: Externos
+  description: Operações de APIs externas
+
+paths:
+  /consertaBicicleta:
+    post:
+      tags:
+      - Funcionário
+      summary: faz um pedido de conserto de bicicleta
+      operationId: consertaBicicleta
+      description: Realiza um pedido de conserto de bicicleta
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: Funcionario
+        description: ID do funcionário
+        type: string
+        format: uuid
+      - in: query
+        name: Bicicleta
+        description: ID da bicicleta
+        type: string
+        format: uuid
+      - in: query
+        name: Tranca
+        description: ID da tranca
+        type: string
+        format: uuid
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  /consertaTotem:
+    post:
+      tags:
+      - Funcionário
+      summary: pede um conserto no totem
+      operationId: consertaTotem
+      description: Realiza um pedido de conserto de totem
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: Funcionario
+        description: ID do funcionário
+        type: string
+        format: uuid
+      - in: query
+        name: Totem
+        description: ID do totem
+        type: string
+        format: uuid
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  /consertaTranca:
+    post:
+      tags:
+      - Funcionário
+      summary: faz um pedido de conserto de tranca
+      operationId: consertaTranca
+      description: Realiza um pedido de conserto de tranca
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: Funcionario
+        description: ID do funcionário
+        type: string
+        format: uuid
+      - in: query
+        name: Tranca
+        description: ID da tranca
+        type: string
+        format: uuid
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  /aposentaBicicleta:
+    post:
+      tags:
+      - Funcionário
+      summary: faz um pedido de aposentar bicicleta
+      operationId: aposentaBicicleta
+      description: Realiza um pedido de aposentar bicicleta
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: Funcionario
+        description: ID do funcionário
+        type: string
+        format: uuid
+      - in: query
+        name: Bicicleta
+        description: ID da bicicleta
+        type: string
+        format: uuid
+      - in: query
+        name: Tranca
+        description: ID da tranca
+        type: string
+        format: uuid  
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists    
+  /aposentaTotem:
+    post:
+      tags:
+      - Funcionário
+      summary: faz um pedido de aposentar totem
+      operationId: aposentaTotem
+      description: Realiza um pedido de aposentar totem
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: Funcionario
+        description: ID do funcionário
+        type: string
+        format: uuid
+      - in: query
+        name: Totem
+        description: ID do totem
+        type: string
+        format: uuid
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists   
+  /aposentaTranca:
+    post:
+      tags:
+      - Funcionário
+      summary: faz um pedido de aposentar tranca
+      operationId: aposentaTranca
+      description: Realiza um pedido de aposentar tranca
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: Funcionario
+        description: ID do funcionário
+        type: string
+        format: uuid
+      - in: query
+        name: Tranca
+        description: ID da tranca
+        type: string
+        format: uuid
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  /alugaBicicleta:
+    post:
+      tags:
+      - Ciclista
+      summary: faz um pedido de aluguel de bicicleta
+      operationId: alugaBicicleta
+      description: Realiza um pedido de aluguel de bicicleta
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: Ciclista
+        description: ID do ciclista alugando
+        type: string
+        format: uuid
+      - in: query
+        name: Totem
+        description: ID do totem (adquirido pelo front-end)
+        type: string
+        format: uuid
+      - in: query
+        name: Tranca
+        description: Número da tranca
+        type: number  
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  /devolveBicicleta:
+    post:
+      tags:
+      - Ciclista
+      summary: faz um pedido de devolução de bicicleta
+      operationId: devolveBicicleta
+      description: Realiza um pedido de devolução de bicicleta
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: Bicicleta
+        description: ID da bicicleta
+        type: string
+        format: uuid
+      - in: query
+        name: Tranca
+        description: ID da tranca
+        type: string
+        format: uuid  
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
